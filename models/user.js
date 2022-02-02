@@ -1,3 +1,5 @@
+// modele pour utilisateur
+
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 
@@ -6,6 +8,7 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: true },
 });
 
+// verification supplémentaire pour avoir une adresse mail unique
 userSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model("User", userSchema);
