@@ -3,6 +3,11 @@
 const http = require("http");
 const app = require("./app");
 
+// Pour la securité
+const helmet = require("helmet");
+
+app.use(helmet());
+
 // gestion port
 const normalizePort = (val) => {
   const port = parseInt(val, 10);
@@ -16,6 +21,7 @@ const normalizePort = (val) => {
   return false;
 };
 const port = normalizePort(process.env.PORT || "3000");
+
 app.set("port", port);
 
 // recherche et gestion des erreurs
