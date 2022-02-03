@@ -1,7 +1,9 @@
+// logique métier appliquée aux routes sauce
+
 const Sauce = require("../models/sauce");
 const fs = require("fs");
 
-// ----------------  OK  ----------------------------
+// creation d'une sauce
 exports.createSauce = (req, res, next) => {
   const sauceObject = JSON.parse(req.body.sauce);
   delete sauceObject._id;
@@ -18,8 +20,7 @@ exports.createSauce = (req, res, next) => {
     .catch((error) => res.status(400).json({ error }));
 };
 
-// ----------------  OK  ----------------------------
-
+// recupération des informations sur une sauce
 exports.getOneSauce = (req, res, next) => {
   Sauce.findOne({
     _id: req.params.id,
@@ -34,8 +35,7 @@ exports.getOneSauce = (req, res, next) => {
     });
 };
 
-// ----------------  OK  ----------------------------
-
+// modification d'une sauce
 exports.modifySauce = (req, res, next) => {
   const sauceObject = req.file
     ? {
@@ -53,8 +53,7 @@ exports.modifySauce = (req, res, next) => {
     .catch((error) => res.status(400).json({ error }));
 };
 
-// ----------------  OK  ----------------------------
-
+// suppression d'une sauce
 exports.deleteSauce = (req, res, next) => {
   Sauce.findOne({ _id: req.params.id })
     .then((sauce) => {
@@ -68,7 +67,7 @@ exports.deleteSauce = (req, res, next) => {
     .catch((error) => res.status(500).json({ error }));
 };
 
-// ----------------  OK  ----------------------------
+// recupération des informations sur toutes les sauces
 
 exports.getAllSauce = (req, res, next) => {
   Sauce.find()

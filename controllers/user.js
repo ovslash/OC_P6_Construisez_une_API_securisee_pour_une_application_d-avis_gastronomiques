@@ -1,9 +1,10 @@
+// logique métier appliquée aux routes user
+
 const bcrypt = require("bcrypt");
-
 const User = require("../models/user");
-
 const jwt = require("jsonwebtoken");
 
+// logique métier pour l'enregistrement d'un utilisateur
 exports.signup = (req, res, next) => {
   bcrypt
     .hash(req.body.password, 10)
@@ -20,6 +21,7 @@ exports.signup = (req, res, next) => {
     .catch((error) => res.status(500).json({ error }));
 };
 
+// logique métier pour la connexion d'un utilisateur
 exports.login = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {

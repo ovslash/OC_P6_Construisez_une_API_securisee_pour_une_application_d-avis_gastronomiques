@@ -3,14 +3,15 @@
 const express = require("express");
 const router = express.Router();
 const userCtrl = require("../controllers/user");
+const checkInputUser = require("../middleware/check-inputs-user");
 
 //--------------------------------------------------------------
 
 // route pour s'enregistrer
-router.post("/signup", userCtrl.signup);
+router.post("/signup", checkInputUser, userCtrl.signup);
 
 // route pour se connecter
-router.post("/login", userCtrl.login);
+router.post("/login", checkInputUser, userCtrl.login);
 
 //--------------------------------------------------------------
 

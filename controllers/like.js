@@ -1,3 +1,5 @@
+// logique métier appliquée à la route like
+
 const Sauce = require("../models/sauce");
 
 exports.modifyLike = (req, res, next) => {
