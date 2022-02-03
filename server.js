@@ -3,10 +3,24 @@
 const http = require("http");
 const app = require("./app");
 
+//--------------------------------------------------------------
+
 // Pour la securité
 const helmet = require("helmet");
-
 app.use(helmet());
+
+// Pour luter contre les attaques de force brut
+const rateLimit = require("express-rate-limit");
+const limiter = rateLimit({
+  // nombre de requetes max
+  max: 100,
+  // wtemps durant lequel un utilisateur le comptage de requetes est fait
+  windowMs: 60 * 60 * 1000,
+  message: "Too many request from this IP",
+});
+app.use(limiter);
+
+//--------------------------------------------------------------
 
 // gestion port
 const normalizePort = (val) => {
