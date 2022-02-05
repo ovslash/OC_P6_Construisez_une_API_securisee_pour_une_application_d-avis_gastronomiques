@@ -1,4 +1,4 @@
-// 
+//
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -13,10 +13,19 @@ const path = require("path");
 
 //--------------------------------------------------------------
 
+// variables d'environement
+const dotenv = require("dotenv");
+dotenv.config();
+
+const BDD_USER = process.env.BDD_USER;
+const BDD_PASSWORD = process.env.BDD_PASSWORD;
+
+//--------------------------------------------------------------
+
 // connexion à la base de données
 mongoose
   .connect(
-    "mongodb+srv://ovslash:10ZazattE51@cluster0.fplvd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    `mongodb+srv://${BDD_USER}:${BDD_PASSWORD}@cluster0.fplvd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log("Connexion à MongoDB réussie !"))
