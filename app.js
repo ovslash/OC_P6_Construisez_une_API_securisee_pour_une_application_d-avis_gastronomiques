@@ -13,17 +13,23 @@ const path = require("path");
 
 //--------------------------------------------------------------
 
-// variables d'environnement
-const dotenv = require("dotenv");
-dotenv.config();
+// variables d'environnement             Pas utilisé dans le cadre du projet
+// const dotenv = require("dotenv");
+// dotenv.config();
 
-const BDD_USER = process.env.BDD_USER;
-const BDD_PASSWORD = process.env.BDD_PASSWORD;
-const BDD_NAME = process.env.BDD_NAME;
+// const BDD_USER = process.env.BDD_USER;
+const BDD_USER = "user79";
+
+// const BDD_PASSWORD = process.env.BDD_PASSWORD;
+const BDD_PASSWORD = "user79";
+
+//const BDD_NAME = process.env.BDD_NAME;
+const BDD_NAME = "myFirstDatabase";
 
 //--------------------------------------------------------------
 
 // connexion à la base de données
+
 mongoose
   .connect(
     `mongodb+srv://${BDD_USER}:${BDD_PASSWORD}@cluster0.fplvd.mongodb.net/${BDD_NAME}?retryWrites=true&w=majority`,
