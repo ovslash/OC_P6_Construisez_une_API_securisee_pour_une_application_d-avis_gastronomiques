@@ -48,8 +48,10 @@ Dans le dossier Front" : run npm install et npm install --save-dev run-script-os
 
 <b>Dans le dossier Back:</b>
 
-creer un dossier images
-BDD_USER=
-BDD_PASSWORD=
-BDD_NAME=
+- creer un dossier images
+- creer un fichier development.env avec :
+  - BDD_USER=
+  - BDD_PASSWORD=
+  - BDD_NAME=
+
 run npm install puis run npm start
